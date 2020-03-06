@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Certificate - Lab</title>
+	</head>
+	<body>
+		<h1>Certificate - Lab</h1>
+		<h2>User</h2>
+		@if(User.Identity.IsAuthenticated)
+		{
+			<p>@User.Identity.Name</p>
+		}
+		else
+		{
+			<p>
+				<i>Anonymous</i>
+			</p>
+		}
+		<h2>Client-certificate</h2>
+		@if(Context.Connection.ClientCertificate != null)
+		{
+			<h3>@Context.Connection.ClientCertificate.Subject</h3>
+			<ul>
+				<li>Archived: <strong>@Context.Connection.ClientCertificate.Archived</strong></li>
+				<li>Issuer: <strong>@Context.Connection.ClientCertificate.Issuer</strong></li>
+				<li>NotAfter: <strong>@Context.Connection.ClientCertificate.NotAfter</strong></li>
+				<li>NotBefore: <strong>@Context.Connection.ClientCertificate.NotBefore</strong></li>
+			</ul>
+		}
+		else
+		{
+			<p>
+				<i>Null</i>
+			</p>
+		}
+	</body>
+</html>
